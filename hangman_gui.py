@@ -1,13 +1,13 @@
-import random
 import Tkinter
 import csv
+import random
 import sys
 
 # TO ADD:
 # HIGH SCHORE: can see high scores, writes correctly
 # NEW GAME: text changes so used can see new theme and such
 
-wordList = open("C:\Python27\Scripts\wordList.csv")
+wordList = open("C:\Users\Steph\Documents\GitHub\Hangman\wordList.csv")
 csv_wordList = csv.reader(wordList)
 
 wordBox = {}
@@ -146,7 +146,10 @@ class GUI(Tkinter.Tk):
     def nextMatch(self):  # restart game with new random answer
         global w_guess
         global t_guess
+        global q
+        q=0
         resetAnswer(answer)
+        print answer
         self.labelVariable.set(self.showRules(maxTurns) +
                                "\n\n" + self.printSpace())
 
@@ -167,7 +170,7 @@ class GUI(Tkinter.Tk):
         global score
         rules = str("Hello, welcome to hangman!\n" +
                     "You get " + str(maxTurns) + " incorrect guesses. " +
-                    "\nGuess in letters only." +
+                    "\nIf an answer is two words, you need to guess a space bar." +
                     "\n Your score is: ") + str(score)
         return rules
 
